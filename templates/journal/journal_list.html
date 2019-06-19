@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>我的日誌</h2>
+<table>
+  <tr>
+    <th>時間</th>
+    <th>項目</th>
+    <th>操作</th>
+  </tr>
+  {% for journal in journal_list %}
+  <tr>
+    <td><i class="far fa-clock"></i>{{ journal.created|date:"l" }}{{ journal.created }}</td>
+    <td><a href="{{ journal.id }}/update/">{{ journal.content }}</a></td>
+    <td><a class="btn btn-dark" href="{{ journal.id }}/delete/"><i class="fas fa-trash"></i></a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% include 'pagination.html' %}
+{% endblock %}
